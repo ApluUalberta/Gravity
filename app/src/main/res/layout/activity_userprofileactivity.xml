@@ -6,9 +6,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <com.github.mikephil.charting.charts.LineChart
-        android:id = "@+id/lineChart"
-        android:layout_width = "fill_parent"
-        android:layout_height = "fill_parent" />
 
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/lineChart"
+        android:layout_width="match_parent"
+        android:layout_height="149dp"
+        android:layout_below="@+id/userPhoto"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginLeft="3dp"
+        android:layout_alignParentRight="true" />
+
+    <ImageView
+        android:id="@+id/userPhoto"
+        android:layout_width="134dp"
+        android:layout_height="130dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="143dp"
+        android:layout_marginLeft="143dp"
+        android:layout_marginTop="54dp"
+        android:contentDescription="lineChart"
+        app:srcCompat="@mipmap/ic_launcher_round" />
 </RelativeLayout>
