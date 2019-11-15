@@ -7,6 +7,7 @@ android {
         applicationId "com.example.gravity"
         minSdkVersion 16
         targetSdkVersion 29
+        multiDexEnabled true
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -28,12 +29,17 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0-alpha'
 
+    // enable mulitdexing
+    implementation 'com.android.support:multidex:1.0.3'
+
     // Firebase API
     implementation 'com.google.firebase:firebase-analytics:17.2.1'
     // Firebase Auth
     implementation 'com.google.firebase:firebase-auth:19.1.0'
     // Firebase Firestore
     implementation 'com.google.firebase:firebase-firestore:21.3.0'
+
+
 }
 
 apply plugin: 'com.google.gms.google-services'

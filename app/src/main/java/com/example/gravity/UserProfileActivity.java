@@ -13,7 +13,7 @@ public class UserProfileActivity extends AppCompatActivity {
     LineChart lineChart;
     LineData lineData;
     LineDataSet lineDataSet;
-    ArrayList lineEntries;
+    ArrayList<Entry> lineEntries;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +27,7 @@ public class UserProfileActivity extends AppCompatActivity {
         lineDataSet.setValueTextColor(Color.BLACK);
         lineDataSet.setValueTextSize(18f);
     }
+
     private void getEntries() {
         lineEntries = new ArrayList<>();
         lineEntries.add(new Entry(2f, 0));

@@ -8,6 +8,6 @@
     <string name="mainActivityEmailHint">enter email</string>
     <string name="mainActivityPasswordHint">enter password</string>
     <string name="mainActivityCreateAnAccountTitle">create an account</string>
-    <string name="mainActivityAlreadyHaveAnAccount">I already have n account</string>
+    <string name="mainActivityAlreadyHaveAnAccount">I already have an account</string>
     <string name="mainActivityForgotPassword">forgot password?</string>
 </resources>
