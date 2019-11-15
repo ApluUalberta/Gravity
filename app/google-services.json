@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "788293542969",
+    "firebase_url": "https://gravity-6a881.firebaseio.com",
+    "project_id": "gravity-6a881",
+    "storage_bucket": "gravity-6a881.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:788293542969:android:00619eb478494d3b5499e8",
+        "android_client_info": {
+          "package_name": "com.example.gravity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "788293542969-bbt536tlsh4measi5e2f9afvnmgjfmnk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLiOvxYUXf90olcKByhaIAn8QCge6R9ko"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "788293542969-bbt536tlsh4measi5e2f9afvnmgjfmnk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
