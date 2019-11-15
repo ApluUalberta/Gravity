@@ -13,11 +13,18 @@
 
     <!--    User Info Activity-->
     <string name="userInfoActivityTitle">Your Info</string>
+    <string name="userInfoActivityEmailHint">enter email</string>
     <string name="userInfoActivityFirstNameHint">enter first name</string>
     <string name="userInfoActivityLastNameHint">enter last name</string>
     <string name="userInfoActivityAgeHint">enter age</string>
     <string name="userInfoActivityGenderHint">select gender</string>
     <string name="userInfoActivitySubmitButton">Submit</string>
     <string name="inputFieldNotFilledError">Please enter info in all the fields</string>
+
+    <!--    PasswordResetActivity-->
+    <string name="passwordResetActivityTitle">a password link will be sent to the following email</string>
+    <string name="passwordResetActivityEnterEmailHint">enter email</string>
+    <string name="passwordResetActivitySendButton">Send</string>
+    <string name="passwordResetActivityEmailEmptyErrorText">Please enter an email before sending</string>
 
 </resources>

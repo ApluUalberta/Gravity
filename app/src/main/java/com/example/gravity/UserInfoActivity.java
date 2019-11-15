@@ -49,6 +49,10 @@ public class UserInfoActivity extends AppCompatActivity {
         genderEditText = findViewById(R.id.userInfoGenderEditText);
         submitButton = findViewById(R.id.userInfoSubmitInfoButton);
 
+        // refresh users current data
+        // pull from firestore
+        LoadCurrentUserData();
+
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +82,10 @@ public class UserInfoActivity extends AppCompatActivity {
             output = false;
         }
         return output;
+    }
+
+    private void LoadCurrentUserData() {
+
     }
 
     private void UpdateUserData() {

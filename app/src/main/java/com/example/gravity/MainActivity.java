@@ -21,7 +21,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -84,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // user needs to reset there password
+                startActivity(new Intent(MainActivity.this, ResetPasswordActivity.class));
             }
         });
 
@@ -98,7 +103,8 @@ public class MainActivity extends AppCompatActivity {
 
                 } else if (registerLoginButton.getText() == getResources().getString(R.string.mainActivityLoginTitle)) {
                     // user wants to sign-in
-                    CheckIfUserExistsAlready();
+                    // CheckIfUserExistsAlready(emailEditText.getText().toString(), passwordEditText.getText().toString());
+                    SignInUser(emailEditText.getText().toString(), passwordEditText.getText().toString());
                 } else {
                     // unrecognized text
                     Log.d(DebugTags.MainActivityDebugTag, "unrecognized text for register/login button");
@@ -112,14 +118,34 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    private void CheckIfUserExistsAlready() {
+    private void CheckIfUserExistsAlready(final String email, String password) {
 
-        // do firebase callback
-        if (UserDoesNotExistAlready) {
-            SignInUser(emailEditText.getText().toString(), passwordEditText.getText().toString());
-        } else {
-            errorTextView.setText(R.string.mainActivityUserExistsAlreadyError);
-        }
+//        CollectionReference usersRef = mFirestore.collection(FirestoreTags.users);
+//        Query query = usersRef.whereEqualTo(FirestoreTags.userEmail, email);
+//        query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                if(task.isSuccessful()){
+//                    for(DocumentSnapshot documentSnapshot : task.getResult()){
+//                        String userEmail = documentSnapshot.getString(FirestoreTags.userEmail);
+//
+//                        if(userEmail.equals(email)){
+//                            Log.d(DebugTags.UserInfoActivityDebugTag, "User Exists");
+//
+//                        }
+//                    }
+//                } else {
+//                }
+//            }
+//        });
+//    }
+//
+//        // do firebase callback
+//        if (UserDoesNotExistAlready) {
+//            SignInUser(emailEditText.getText().toString(), passwordEditText.getText().toString());
+//        } else {
+//            errorTextView.setText(R.string.mainActivityUserExistsAlreadyError);
+//        }
 
     }
 
@@ -180,6 +206,7 @@ public class MainActivity extends AppCompatActivity {
     private void InitializeUserDataForFirestore(FirebaseUser user) {
         // initialize data for a particular user when they create a new account
         Map<String, Object> userData = new HashMap<>();
+        userData.put(FirestoreTags.userEmail, "");
         userData.put(FirestoreTags.userFirstName, "");
         userData.put(FirestoreTags.userLastName, "");
         userData.put(FirestoreTags.userAge, "");
