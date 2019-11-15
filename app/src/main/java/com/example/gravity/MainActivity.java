@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseFirestore mFirestore;
     private TextView mainTitleTextView;
     private TextView errorTextView;
-    private EditText fullnameEditText;
     private EditText emailEditText;
     private EditText passwordEditText;
     private TextView createAnAccountTextView;
@@ -52,14 +51,11 @@ public class MainActivity extends AppCompatActivity {
 
         mainTitleTextView = findViewById(R.id.mainActivityTitle);
         errorTextView = findViewById(R.id.mainActivityErrorTextView);
-        fullnameEditText = findViewById(R.id.mainActivityFullnameEditText);
         emailEditText = findViewById(R.id.mainActivityEmailEditText);
         passwordEditText = findViewById(R.id.mainActivityPasswordEditText);
         createAnAccountTextView = findViewById(R.id.mainActivityCreateAnAccountTextView);
         forgotPasswordTextView = findViewById(R.id.mainActivityForgotPasswordTextView);
         registerLoginButton = findViewById(R.id.mainActivityRegisterLoginButton);
-
-        fullnameEditText.setVisibility(View.INVISIBLE);
 
         createAnAccountTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,14 +64,12 @@ public class MainActivity extends AppCompatActivity {
                 if (currentText.equals(createAnAccountString)) {
                     // need to switch to register layout
                     mainTitleTextView.setText(R.string.mainActivityRegisterTitle);
-                    fullnameEditText.setVisibility(View.VISIBLE);
                     createAnAccountTextView.setText(R.string.mainActivityAlreadyHaveAnAccount);
                     forgotPasswordTextView.setVisibility(View.INVISIBLE);
                     registerLoginButton.setText(R.string.mainActivityRegisterTitle);
                 } else if (currentText.equals(alreadyHaveAnAccountString)) {
                     // need to switch to login layout
                     mainTitleTextView.setText(R.string.mainActivityLoginTitle);
-                    fullnameEditText.setVisibility(View.INVISIBLE);
                     createAnAccountTextView.setText(R.string.mainActivityCreateAnAccountTitle);
                     forgotPasswordTextView.setVisibility(View.VISIBLE);
                     registerLoginButton.setText(R.string.mainActivityLoginTitle);
@@ -83,6 +77,13 @@ public class MainActivity extends AppCompatActivity {
                     // unrecognized text
                     Log.d(DebugTags.MainActivityDebugTag, "unrecognized text for create an account");
                 }
+            }
+        });
+
+        forgotPasswordTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // user needs to reset there password
             }
         });
 
@@ -97,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
                 } else if (registerLoginButton.getText() == getResources().getString(R.string.mainActivityLoginTitle)) {
                     // user wants to sign-in
-                    SignInUser(emailEditText.getText().toString(), passwordEditText.getText().toString());
+                    CheckIfUserExistsAlready();
                 } else {
                     // unrecognized text
                     Log.d(DebugTags.MainActivityDebugTag, "unrecognized text for register/login button");
@@ -109,6 +110,17 @@ public class MainActivity extends AppCompatActivity {
     private boolean EmailIsValid(String email) {
         // ensure email is valid
         return true;
+    }
+
+    private void CheckIfUserExistsAlready() {
+
+        // do firebase callback
+        if (UserDoesNotExistAlready) {
+            SignInUser(emailEditText.getText().toString(), passwordEditText.getText().toString());
+        } else {
+            errorTextView.setText(R.string.mainActivityUserExistsAlreadyError);
+        }
+
     }
 
     private void RegisterUser(String email, String password) {
@@ -168,7 +180,10 @@ public class MainActivity extends AppCompatActivity {
     private void InitializeUserDataForFirestore(FirebaseUser user) {
         // initialize data for a particular user when they create a new account
         Map<String, Object> userData = new HashMap<>();
-        userData.put(FirestoreTags.userFullName, fullnameEditText.getText().toString());
+        userData.put(FirestoreTags.userFirstName, "");
+        userData.put(FirestoreTags.userLastName, "");
+        userData.put(FirestoreTags.userAge, "");
+        userData.put(FirestoreTags.userGender, "");
 
         mFirestore.collection(FirestoreTags.users).document(user.getUid())
                 .set(userData)
@@ -176,6 +191,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Log.d(DebugTags.MainActivityDebugTag, "DocumentSnapshot successfully written!");
+                        startActivity(new Intent(MainActivity.this, UserInfoActivity.class));
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

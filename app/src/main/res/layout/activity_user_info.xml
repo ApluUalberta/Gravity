@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:paddingRight="16dp"
+    android:paddingLeft="16dp"
+    tools:context=".UserInfoActivity">
+
+    <TextView
+        android:id="@+id/userInfoTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/userInfoActivityTitle"
+        android:textColor="@color/white"
+        android:textSize="38sp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/userInfoErrorTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red"
+        android:textSize="22sp"
+        android:layout_below="@+id/userInfoTitle"
+        android:layout_marginBottom="15dp"
+        android:gravity="center"/>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/userInfoErrorTextView">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/userInfoFirstNameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/userInfoActivityFirstNameHint"
+                android:textColorHint="@color/white"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/rounded_box_grey_background" />
+
+            <EditText
+                android:id="@+id/userInfoLastNameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/userInfoActivityLastNameHint"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/rounded_box_grey_background"
+                android:textColorHint="@color/white" />
+
+            <EditText
+                android:id="@+id/userInfoAgeEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/userInfoActivityAgeHint"
+                android:textColorHint="@color/white"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/rounded_box_grey_background" />
+
+            <EditText
+                android:id="@+id/userInfoGenderEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/userInfoActivityGenderHint"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/rounded_box_grey_background"
+                android:textColorHint="@color/white" />
+
+            <Button
+                android:id="@+id/userInfoSubmitInfoButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/userInfoActivitySubmitButton"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/rounded_box_blue_background" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</RelativeLayout>

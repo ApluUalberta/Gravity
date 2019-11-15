@@ -4,10 +4,20 @@
     <!--    Main Activity-->
     <string name="mainActivityLoginTitle">Login</string>
     <string name="mainActivityRegisterTitle">Register</string>
-    <string name="mainActivityFullnameHint">enter fullname</string>
     <string name="mainActivityEmailHint">enter email</string>
     <string name="mainActivityPasswordHint">enter password</string>
     <string name="mainActivityCreateAnAccountTitle">create an account</string>
     <string name="mainActivityAlreadyHaveAnAccount">I already have an account</string>
     <string name="mainActivityForgotPassword">forgot password?</string>
+    <string name="mainActivityUserExistsAlreadyError">user already exists</string>
+
+    <!--    User Info Activity-->
+    <string name="userInfoActivityTitle">Your Info</string>
+    <string name="userInfoActivityFirstNameHint">enter first name</string>
+    <string name="userInfoActivityLastNameHint">enter last name</string>
+    <string name="userInfoActivityAgeHint">enter age</string>
+    <string name="userInfoActivityGenderHint">select gender</string>
+    <string name="userInfoActivitySubmitButton">Submit</string>
+    <string name="inputFieldNotFilledError">Please enter info in all the fields</string>
+
 </resources>
