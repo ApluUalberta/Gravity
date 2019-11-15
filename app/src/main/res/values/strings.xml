@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Gravity</string>
+
+    <!--    Main Activity-->
+    <string name="mainActivityLoginTitle">Login</string>
+    <string name="mainActivityRegisterTitle">Register</string>
+    <string name="mainActivityFullnameHint">enter fullname</string>
+    <string name="mainActivityEmailHint">enter email</string>
+    <string name="mainActivityPasswordHint">enter password</string>
+    <string name="mainActivityCreateAnAccountTitle">create an account</string>
+    <string name="mainActivityAlreadyHaveAnAccount">I already have n account</string>
+    <string name="mainActivityForgotPassword">forgot password?</string>
 </resources>
