@@ -23,9 +23,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 
@@ -61,18 +59,20 @@ public class MainActivity extends AppCompatActivity {
         forgotPasswordTextView = findViewById(R.id.mainActivityForgotPasswordTextView);
         registerLoginButton = findViewById(R.id.mainActivityRegisterLoginButton);
 
+        fullnameEditText.setVisibility(View.INVISIBLE);
+
         createAnAccountTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String currentText = createAnAccountTextView.getText().toString();
-                if (currentText == createAnAccountString) {
+                if (currentText.equals(createAnAccountString)) {
                     // need to switch to register layout
                     mainTitleTextView.setText(R.string.mainActivityRegisterTitle);
-                    fullnameEditText.setVisibility(View.INVISIBLE);
+                    fullnameEditText.setVisibility(View.VISIBLE);
                     createAnAccountTextView.setText(R.string.mainActivityAlreadyHaveAnAccount);
                     forgotPasswordTextView.setVisibility(View.INVISIBLE);
                     registerLoginButton.setText(R.string.mainActivityRegisterTitle);
-                } else if (currentText == alreadyHaveAnAccountString) {
+                } else if (currentText.equals(alreadyHaveAnAccountString)) {
                     // need to switch to login layout
                     mainTitleTextView.setText(R.string.mainActivityLoginTitle);
                     fullnameEditText.setVisibility(View.INVISIBLE);
@@ -121,7 +121,12 @@ public class MainActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(DebugTags.MainActivityDebugTag, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            InitializeUserDataForFirestore(user);
+                            if (user != null) {
+                                InitializeUserDataForFirestore(user);
+                            } else {
+                                Log.d(DebugTags.MainActivityDebugTag, "MainActivity: Firebase user is null");
+                            }
+
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(DebugTags.MainActivityDebugTag, "createUserWithEmail:failure", task.getException());
